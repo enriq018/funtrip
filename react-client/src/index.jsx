@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import _ from 'lodash';
 import Login from './components/Login.jsx';
+import CurrentInfo from './components/CurrentInfo.jsx';
+import Reservations from './components/Reservations.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,9 +31,12 @@ class App extends React.Component {
       </nav>
       <div className="col-md-12">
         <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/>
+        <CurrentInfo/>
+        <Reservations/>
       </div>
     </div>);
   }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+         

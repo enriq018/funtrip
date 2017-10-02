@@ -1,7 +1,8 @@
+"use strict";
 const express = require('express');
 const bodyParser = require('body-parser');
 const querystring = require('querystring');
-const db = require('../database/index');
+// const db = require('../database/index');
 const Promise = require('bluebird');
 
 const app = express();
