@@ -7,12 +7,17 @@ import Checklist from './components/checklist.jsx';
 import ObjList from './components/objlist.jsx';
 import CurrentInfo from './components/CurrentInfo.jsx';
 import Reservations from './components/Reservations.jsx';
+import SideBar from './components/SideBar.jsx';
+
+var sidebarTestData = [{location:'Paris'}, {location: 'San Francisco'}, {location: 'Alaska'}];
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false
+      loggedIn: false,
+      sideBarOn: true,
+
     };
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -27,21 +32,35 @@ class App extends React.Component {
   }
 
   render () {
-    return (<div className='.container-fluid'>
-      <nav className="navbar navbar-default bg-faded">
-        <h1 id="app-title" className="navbar-brand">FunTrip</h1>
-      </nav>
-      <div className="col-md-12">
-        <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/>
-        <CurrentInfo/>
-        <Reservations/>
+    return (
+
+      <div class = 'wrapper'>
+        <div className='.container-fluid'>
+          <nav className="navbar navbar-default bg-faded">
+            <h1 id="app-title" className="navbar-brand">FunTrip</h1>
+          </nav>
+          <div className="col-md-12">
+
+            <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/>
+                <button type="button" className="btn btn-primary" onClick = {() => {this.setState({sideBarOn:!this.state.sideBarOn})}}>
+                <i class="glyphicon glyphicon-align-left"></i>
+                Toggle Sidebar
+                </button>
+            {this.state.sideBarOn ? <SideBar testData = {sidebarTestData}/> : null}
+            <CurrentInfo/>
+            <Reservations/>
+          </div>
+          <div className="main">
+            <Checklist />
+            <ObjList />
+          </div>
+        </div>
       </div>
-      <div className="main">
-        <Checklist />
-        <ObjList />
-      </div>
-    </div>);
+
+    );
+
   }
 }
+
 
 ReactDOM.render(<App />, document.getElementById('app'));
