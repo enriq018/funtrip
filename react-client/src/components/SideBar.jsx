@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class Sidebar extends React.Component {
 	constructor(props){
 		super(props);
@@ -13,11 +12,9 @@ class Sidebar extends React.Component {
 			  <div className="sidebar-header">
 			    <h3> FunTrip</h3>
 			    <img className = 'userLogo' src='http://www.crazy3dfree.com/uploads/101101/1_155752_1.jpg'/>
-
 			    <h4> Welcome</h4>
 			    <h4> User </h4>
 			  </div>
-
 			  <ul className="list-unstyled components">
 			    <li>
 		        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"> Your Trips</a>
@@ -25,7 +22,6 @@ class Sidebar extends React.Component {
 		        {this.props.testData.map((el,index) => <SidebarTrips trip = {el} key = {index}/>)}
 			      </ul>
 			    </li>
-
 			    <button type="button" className="btn btn-success"> Add New Trip </button>
 
 			  </ul>
