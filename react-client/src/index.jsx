@@ -46,7 +46,7 @@ class App extends React.Component {
                 <i class="glyphicon glyphicon-align-left"></i>
                 Toggle Sidebar
                 </button>
-            {this.state.sideBarOn ? <SideBar testData = {sidebarTestData}/> : null}
+            {this.state.sideBarOn ? <SideBar name = {'User1'} testData = {sidebarTestData}/> : null}
             <CurrentInfo/>
             <Reservations/>
           </div>

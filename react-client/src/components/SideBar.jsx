@@ -13,7 +13,7 @@ class Sidebar extends React.Component {
 			    <h3> FunTrip</h3>
 			    <img className = 'userLogo' src='http://www.crazy3dfree.com/uploads/101101/1_155752_1.jpg'/>
 			    <h4> Welcome</h4>
-			    <h4> User </h4>
+			    <h4> {this.props.name} </h4>
 			  </div>
 			  <ul className="list-unstyled components">
 			    <li>
