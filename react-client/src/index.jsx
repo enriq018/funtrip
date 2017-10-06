@@ -180,11 +180,42 @@ class App extends React.Component {
   }
 
   handleReservationAdd({name, category, referenceNumber, date, destination}) {
-    console.log(name, category, referenceNumber, date, destination);
+    var url = '/reservations';
+    var data = {name: name, category: category, referenceNumber: referenceNumber, date: date, destination: this.state.trips[0]._id}
+    $.ajax({
+      method: 'POST',
+      url: '/reservations', 
+      data: JSON.stringify(data),
+      contentType: 'application/json',
+      success: (results) => {
+        console.log('successfully Added reservation item');
+        this.updateStateForTrips();
+      },
+      error: (error) => {
+        console.error('Add trip error');
+        console.error(error);        
+      }
+    }); 
+  
   }
 
   handleReservationDelete (resId) {
     console.log(resId);
+    var url = '/reservations';
+    var data = {id: resId};
+    $.ajax({
+      method: 'DELETE',
+      url: url,
+      data: JSON.stringify(data),
+      contentType: 'application/json',
+      success: (results) => {
+        this.updateStateForTrips();
+      },
+      error: (error) => {
+        console.error('Not able to delete Obj');
+        console.error(error);
+      }
+    });
   }
 
   handlePrepAdd ({name, dueDate, responsibleUser}) {

@@ -178,12 +178,18 @@ var getDestinationForTrip = function(tripId) {
 };
 
 var createReservation = function(name, category, referenceNumber, date, trip, destination) {
+  var newReservation = new Reservation({name: name, category: category, referenceNumber: referenceNumber, date: date, trip: trip, destination: destination});
+  return newReservation.save();
   //link with trip
   //link with destination
 };
 
 var getReservationsForTrip = function(tripId) {
   return Reservation.find({trip: tripId});
+};
+
+var deleteReservationItem = function(tripId) {
+  return Reservation.remove({_id: tripId});
 };
 
 var createObjective = function(name, category, tripId, destinationId) {
@@ -368,3 +374,7 @@ module.exports.updatePreparationItem = updatePreparationItem;
 module.exports.createObjective = createObjective;
 module.exports.deleteObjItem = deleteObjItem;
 module.exports.updateObjItem = updateObjItem;
+module.exports.createReservation = createReservation; 
+module.exports.getReservationsForTrip = getReservationsForTrip;
+module.exports.deleteReservationItem = deleteReservationItem;
+

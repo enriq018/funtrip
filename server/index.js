@@ -149,7 +149,33 @@ app.delete('/obj/:Objid', (req, res) => {
   });
 });
 
+
+app.post('/reservations', (req, res) => {
+  var promise = DB.createReservation(req.body.name, req.body.category, req.body.referenceNumber, req.body.date, 
+    req.body.destination, req.body.destination);
+  promise.then(function(data) {
+    res.status(200);
+    res.send('added to reservations');
+  }).error(function(error) {
+    console.log('error with adding to reservation db', error);
+  });
+});
+
+app.delete('/reservations', (req, res) => {
+  var promise = DB.deleteReservationItem(req.body.id);
+  promise.then(function(data) {
+    res.status(200);
+    res.send('deleted reservations');
+  }).error(function(error) {
+    console.log('error with deleting reservation db', error);
+  });
+});
+
+
+
 let port = process.env.PORT || 3000;
+
+
 
 app.listen(port, () => {
   console.log('listening on port 3000!');
